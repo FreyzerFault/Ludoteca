@@ -8,13 +8,8 @@ export default function InputUsername() {
       setUsername(username.trimStart().trimEnd())
   }, [username])
 
-  const handleSubmit = () => {
-    window.location.assign(`?username=${username}`)
-  }
-
   return (
     <form
-      onSubmit={handleSubmit}
       style={{
         display: 'flex',
         flexDirection: 'column',

@@ -14,7 +14,7 @@ import BackButton from './components/BackButton'
 
 const globalMock = false
 const pathUsername =
-  new URLSearchParams(window.location.search).get('username') ?? ''
+  new URLSearchParams(window.location.search).get('bgg-username') ?? ''
 
 function App() {
   const [mock, setMock] = useState(globalMock)
@@ -45,7 +45,12 @@ function App() {
       <header>
         <h1 className='title'>
           {userName.length > 0 && (
-            <BackButton backFunc={() => setUserName('')} />
+            <BackButton
+              backFunc={() => {
+                setUserName('')
+                window.location.assign('/')
+              }}
+            />
           )}
           LUDOTECA
           <LudotecaIcon className={'logo'} />
