@@ -23,22 +23,15 @@ header {
   font-family: oborus;
 }
 
-header > .logo {
+header .logo {
   position: absolute;
   z-index: 0;
   top: 0%;
-  right: 0%;
-  width: 150px;
-}
-
-@media only screen and (width < 700px) {
-  header > .logo {
-    top: 10%;
-    width: 100px;
-  }
+  right: -50%;
+  height: 100%;
 }
 @media only screen and (width < 460px) {
-  header > .logo {
+  header .logo {
     display: none;
   }
 }

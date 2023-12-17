@@ -42,8 +42,10 @@ function App() {
       </section> */}
 
       <header>
-        <LudotecaIcon className={'logo'} />
-        <h1 className='title'>LUDOTECA</h1>
+        <h1 className='title'>
+          LUDOTECA
+          <LudotecaIcon className={'logo'} />
+        </h1>
       </header>
 
       {userName.length === 0 && <InputUsername />}
