@@ -12,7 +12,8 @@ import LudotecaIcon from './components/icons/LudotecaIcon'
 import InputUsername from './components/InputUsername'
 
 const globalMock = false
-const pathUsername = window.location.pathname.slice(1)
+const pathUsername =
+  new URLSearchParams(window.location.search).get('username') ?? ''
 
 function App() {
   const [mock, setMock] = useState(globalMock)

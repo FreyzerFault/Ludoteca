@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
 
-const url = window.location.href
-
 export default function InputUsername() {
   const [username, setUsername] = useState('')
 
@@ -10,9 +8,13 @@ export default function InputUsername() {
       setUsername(username.trimStart().trimEnd())
   }, [username])
 
+  const handleSubmit = () => {
+    window.location.assign(`?username=${username}`)
+  }
+
   return (
     <form
-      action={`${url}${username}`}
+      onSubmit={handleSubmit}
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -21,6 +23,7 @@ export default function InputUsername() {
       }}
     >
       <input
+        name='username'
         type='text'
         placeholder='Introduce tu usuario'
         onChange={(e) => setUsername(e.target.value)}
