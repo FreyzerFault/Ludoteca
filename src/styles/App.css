@@ -23,15 +23,24 @@ header {
   font-family: oborus;
 }
 
-header > .oborus-logo {
+header > .logo {
   position: absolute;
   z-index: 0;
-  top: 98%;
-  left: 0%;
-  width: 20%;
-  /* max-width: 100px; */
+  top: 0%;
+  right: 0%;
+  width: 150px;
+}
 
-  translate: 0% -50%;
+@media only screen and (width < 700px) {
+  header > .logo {
+    top: 10%;
+    width: 100px;
+  }
+}
+@media only screen and (width < 460px) {
+  header > .logo {
+    display: none;
+  }
 }
 
 /* TITULO de la PAGINA */
@@ -45,7 +54,7 @@ header > .oborus-logo {
 .title::before {
   position: absolute;
   filter: drop-shadow(0px 2px 3px black);
-  content: 'LUDOTECA OBORUS';
+  content: 'LUDOTECA';
   background: linear-gradient(
     2deg,
     #0055d3,

@@ -8,10 +8,9 @@ import { DataList } from './DataList'
 import { useSort } from '../hooks/useSort'
 import { SortableProperties, SortableProperty } from '../utils/sort'
 import { LoadingSpinner } from './icons/LoadingSpinner'
-import { OborusLogo, OborusLogoWithBackground } from './icons/OborusLogo'
 
 export function BoardGameCollection({
-  username = 'oborus',
+  userName = '',
   collection,
   initialSortableProp = SortableProperties.dateAdded,
 }) {
@@ -34,7 +33,7 @@ export function BoardGameCollection({
     setSortOrder(newSort.defaultOrder)
   }
 
-  const handleOrder = (e) => {
+  const handleOrder = () => {
     setInverseOrder()
   }
 
@@ -43,11 +42,8 @@ export function BoardGameCollection({
       {collection !== null ? (
         <section className='collection-header'>
           <h1 className='collection-title'>
-            {collection.length}
-            <span>
-              {' '}
-              Juegos en {username} <OborusLogoWithBackground />
-            </span>
+            {collection.length} Juegos
+            {userName.length > 0 && <span>de {userName}</span>}
           </h1>
           <SelectSort
             handleSort={handleSort}
@@ -76,6 +72,7 @@ BoardGameCollection.propTypes = {
   username: PropTypes.string,
   collection: PropTypes.array,
   initialSortableProp: PropTypes.instanceOf(SortableProperty),
+  userName: PropTypes.string,
 }
 
 function SelectSort({ handleSort, handleOrder, sortChecked, sortOrder }) {

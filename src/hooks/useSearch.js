@@ -7,6 +7,8 @@ import { SortByProperty, SortableProperties } from '../utils/sort'
 
 class CancelError extends Error {}
 
+const maxSearchLimit = 100
+
 // Gestiona la busqueda de un termino
 // Pasale la funcion que busca para que actualice los resultados
 export function useSearch({
@@ -62,7 +64,9 @@ export function useSearch({
         if (filterOwned) data = setQueryDataHandle(data)
 
         // Hacemos una peticion extra para conseguir mas datos de cada juego encontrado
-        return boardGamesRequestFunc({ gameIds: data.map((item) => item.id) })
+        return boardGamesRequestFunc({
+          gameIds: data.slice(0, maxSearchLimit).map((item) => item.id),
+        })
       })
       .then((data) => {
         // Si esta peticion deja de ser la mas reciente no es relevante, por lo que la cancelamos

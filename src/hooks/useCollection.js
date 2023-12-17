@@ -8,7 +8,7 @@ import {
 import { ColType, ItemType } from '../services/bgg/bgg'
 
 export function useCollection({
-  username = 'oborus',
+  userName = 'oborus',
   showExpansions = true,
   mock = false,
   colFilter = ColType.Owned,
@@ -27,7 +27,7 @@ export function useCollection({
       ? GetCollectionDetailed
       : GetCollection
     getCollectionFunction({
-      username: username,
+      username: userName,
       excludeSubtype: showExpansions ? '' : ItemType.Expansion,
       colFilter,
     })
@@ -38,7 +38,7 @@ export function useCollection({
         return setCollection(data)
       })
       .catch((e) => console.error(e))
-  }, [username, mock, showExpansions, colFilter, detailed])
+  }, [userName, mock, showExpansions, colFilter, detailed])
 
   return { collection }
 }

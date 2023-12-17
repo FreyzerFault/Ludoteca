@@ -9,7 +9,6 @@ import { DataList } from './DataList'
 import { ErrorMessage } from './ErrorMessage'
 import { Toggle } from './Toggle'
 import { BGGLogo } from './icons/BGGLogo'
-import { OborusLogo } from './icons/OborusLogo'
 
 // HOOKS
 import { useState, useMemo } from 'react'
@@ -23,6 +22,7 @@ export function SearchBar({
   maxResults = 24,
   mock = false,
   myCollection = [],
+  userName = 'tu perfil',
 }) {
   const [filterOwned, setFilterOwned] = useState(true)
 
@@ -48,13 +48,13 @@ export function SearchBar({
     <>
       <section className='search-area'>
         <section className='filters'>
-          <span>{filterOwned ? 'Juegos de Oborus' : 'Todos'}</span>
+          <span>{filterOwned ? 'Juegos de ' + userName : 'Todos'}</span>
           <Toggle
             defaultChecked
             checked={filterOwned}
             onChecked={setFilterOwned}
             uncheckedComponent={<BGGLogo />}
-            checkedComponent={<OborusLogo />}
+            checkedComponent={<img src='profile.svg' alt='myCollection' />}
           />
         </section>
 
@@ -83,4 +83,5 @@ SearchBar.propTypes = {
   mock: PropTypes.bool,
   myCollection: PropTypes.array,
   filterOwned: PropTypes.bool,
+  userName: PropTypes.string,
 }

@@ -51,6 +51,7 @@ export async function GetCollectionDetailed({
   subtype = ItemType.BoardGame,
   excludeSubtype = ItemType.Expansion,
   colFilter = ColType.Owned,
+  limit = 500,
 }) {
   return GetCollection({
     username,
@@ -59,9 +60,10 @@ export async function GetCollectionDetailed({
     colFilter,
     stats: true,
   }).then((col) => {
-    const ids = col.map(({ id }) => id)
+    const limitedCol = col.slice(0, limit)
+    const ids = limitedCol.map(({ id }) => id)
     // Datos extra que se añaden al resultado de la busqueda
-    const extraData = col.map(
+    const extraData = limitedCol.map(
       ({ dateAdded, ranking, subRankings, avgRating, numOwned }) => ({
         dateAdded,
         ranking,

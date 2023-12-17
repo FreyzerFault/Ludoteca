@@ -2,24 +2,27 @@ import './styles/App.css'
 
 import { useState } from 'react'
 import { useCollection } from './hooks/useCollection'
-import { useManuales } from './hooks/useManuales'
 import { ColType, postPlay } from './services/bgg/bgg'
 
 // Componentes React
 import { SearchBar } from './components/SearchBar'
 import { BoardGameCard } from './components/BoardGameCard'
 import { BoardGameCollection } from './components/BoardGameCollection'
-import { OborusLogo } from './components/icons/OborusLogo'
+import LudotecaIcon from './components/icons/LudotecaIcon'
 
 const globalMock = false
 
 function App() {
   const [mock, setMock] = useState(globalMock)
 
+  const [userName, setUserName] = useState(
+    window.location.pathname.slice(1) ?? 'Freyzer'
+  )
+
   const { collection } = useCollection({
     mock,
     showExpansions: true,
-    username: 'Oborus',
+    userName,
     colFilter: ColType.Owned,
     detailed: true,
   })
@@ -38,20 +41,21 @@ function App() {
       </section> */}
 
       <header>
-        <OborusLogo />
-        <h1 className='title'>LUDOTECA OBORUS</h1>
+        <LudotecaIcon className={'logo'} />
+        <h1 className='title'>LUDOTECA</h1>
       </header>
 
       <SearchBar
-        maxResults={24}
+        maxResults={40}
         ComponentCardTemplateForResult={BoardGameCard}
         mock={mock}
         myCollection={collection}
+        userName={userName}
       />
 
       <BoardGameCollection
         collection={collection}
-        username={'Oborus'}
+        userName={userName}
       ></BoardGameCollection>
 
       {false && (
