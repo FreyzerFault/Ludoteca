@@ -63,6 +63,8 @@ export function useSearch({
         // Si esta activado el Filtro de "En Propiedad" (filterOwned) se busca que solo salgan los de la coleccion que se pasa
         if (filterOwned) data = setQueryDataHandle(data)
 
+        if (data.length === 0) return []
+
         // Hacemos una peticion extra para conseguir mas datos de cada juego encontrado
         return boardGamesRequestFunc({
           gameIds: data.slice(0, maxSearchLimit).map((item) => item.id),
