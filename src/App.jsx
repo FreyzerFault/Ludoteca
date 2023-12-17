@@ -9,15 +9,15 @@ import { SearchBar } from './components/SearchBar'
 import { BoardGameCard } from './components/BoardGameCard'
 import { BoardGameCollection } from './components/BoardGameCollection'
 import LudotecaIcon from './components/icons/LudotecaIcon'
+import InputUsername from './components/InputUsername'
 
 const globalMock = false
+const pathUsername = window.location.pathname.slice(1)
 
 function App() {
   const [mock, setMock] = useState(globalMock)
 
-  const [userName, setUserName] = useState(
-    window.location.pathname.slice(1) ?? 'Freyzer'
-  )
+  const [userName, setUserName] = useState(pathUsername)
 
   const { collection } = useCollection({
     mock,
@@ -45,30 +45,35 @@ function App() {
         <h1 className='title'>LUDOTECA</h1>
       </header>
 
-      <SearchBar
-        maxResults={40}
-        ComponentCardTemplateForResult={BoardGameCard}
-        mock={mock}
-        myCollection={collection}
-        userName={userName}
-      />
+      {userName.length === 0 && <InputUsername />}
+      {userName.length > 0 && (
+        <>
+          <SearchBar
+            maxResults={40}
+            ComponentCardTemplateForResult={BoardGameCard}
+            mock={mock}
+            myCollection={collection}
+            userName={userName}
+          />
 
-      <BoardGameCollection
-        collection={collection}
-        userName={userName}
-      ></BoardGameCollection>
+          <BoardGameCollection
+            collection={collection}
+            userName={userName}
+          ></BoardGameCollection>
 
-      {false && (
-        <section>
-          <button
-            onClick={() =>
-              // authenticate({ username: 'Freyzer', password: 'Freyzer0.' })
-              postPlay()
-            }
-          >
-            TEST POST Request
-          </button>
-        </section>
+          {false && (
+            <section>
+              <button
+                onClick={() =>
+                  // authenticate({ username: 'Freyzer', password: 'Freyzer0.' })
+                  postPlay()
+                }
+              >
+                TEST POST Request
+              </button>
+            </section>
+          )}
+        </>
       )}
     </main>
   )

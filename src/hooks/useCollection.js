@@ -19,6 +19,8 @@ export function useCollection({
   const prevCollection = useRef(collection)
 
   useEffect(() => {
+    if (userName.length === 0) return
+
     const getCollectionFunction = mock
       ? detailed
         ? GetCollectionDetailedMock
