@@ -10,6 +10,7 @@ import { BoardGameCard } from './components/BoardGameCard'
 import { BoardGameCollection } from './components/BoardGameCollection'
 import LudotecaIcon from './components/icons/LudotecaIcon'
 import InputUsername from './components/InputUsername'
+import BackButton from './components/BackButton'
 
 const globalMock = false
 const pathUsername =
@@ -43,6 +44,9 @@ function App() {
 
       <header>
         <h1 className='title'>
+          {userName.length > 0 && (
+            <BackButton backFunc={() => setUserName('')} />
+          )}
           LUDOTECA
           <LudotecaIcon className={'logo'} />
         </h1>

@@ -20,7 +20,6 @@ header {
   justify-content: center;
   width: 100%;
   text-align: center;
-  font-family: oborus;
 }
 
 header .logo {
@@ -43,6 +42,7 @@ header .logo {
 
   font-size: 5em;
   font-weight: bold;
+  font-family: oborus;
 }
 .title::before {
   position: absolute;
@@ -79,6 +79,31 @@ header .logo {
   .title {
     font-size: 4em;
   }
+}
+
+/* USERNAME INPUT */
+.username-input {
+  border: 2px solid #111;
+  border-radius: 8px;
+  background-color: #111;
+  box-shadow: 0px 5px 10px 0px #111;
+  border: 2px solid dimgray;
+
+  max-width: 1000px;
+  width: 90%;
+  align-items: center;
+
+  margin: 0px;
+  padding: 0px 8px;
+
+  text-align: center;
+  line-height: 1.8em;
+  font-size: 1.6em;
+}
+
+.username-submit-btn {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 /* BUSQUEDA */
@@ -519,3 +544,31 @@ header .logo {
   padding-left: 5px;
   cursor: pointer;
 }
+
+.back-button {
+  position: absolute;
+  left: -40%;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 100%;
+}
+.back-button > img {
+  fill: white;
+  width: 40px;
+  padding: 10px;
+}
+
+@media only screen and (width < 460px) {
+  .back-button {
+    display: none;
+  }
+}
+
+/* .back-button span {
+  font-size: 1.6em;
+  font-weight: bold;
+} */

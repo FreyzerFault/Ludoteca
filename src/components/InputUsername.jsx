@@ -23,14 +23,19 @@ export default function InputUsername() {
       }}
     >
       <input
-        name='username'
+        className='username-input'
+        name='bgg-username'
         type='text'
         placeholder='Introduce tu usuario'
         onChange={(e) => setUsername(e.target.value)}
         value={username}
       ></input>
-      <button type='submit' disabled={username.length === 0}>
-        Abrir Ludoteca
+      <button
+        type='submit'
+        className='username-submit-btn'
+        disabled={username.length === 0}
+      >
+        Ver Ludoteca
       </button>
     </form>
   )
