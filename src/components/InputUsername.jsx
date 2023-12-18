@@ -10,6 +10,7 @@ export default function InputUsername() {
 
   return (
     <form
+      className='username-form'
       style={{
         display: 'flex',
         flexDirection: 'column',

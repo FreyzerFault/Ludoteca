@@ -82,15 +82,19 @@ header .logo {
 }
 
 /* USERNAME INPUT */
-.username-input {
+.username-form {
+  max-width: 600px;
+  width: 100%;
+}
+.username-form input {
   border: 2px solid #111;
   border-radius: 8px;
   background-color: #111;
   box-shadow: 0px 5px 10px 0px #111;
   border: 2px solid dimgray;
 
-  max-width: 1000px;
   width: 90%;
+  min-width: 200px;
   align-items: center;
 
   margin: 0px;
@@ -99,6 +103,11 @@ header .logo {
   text-align: center;
   line-height: 1.8em;
   font-size: 1.6em;
+}
+@media only screen and (width <= 400px) {
+  .username-form input {
+    font-size: 1.2em;
+  }
 }
 
 .username-submit-btn {
