@@ -21,7 +21,7 @@ export default function InputUsername() {
         className='username-input'
         name='bgg-username'
         type='text'
-        placeholder='Introduce tu usuario'
+        placeholder='Introduce tu usuario de BGG'
         onChange={(e) => setUsername(e.target.value)}
         value={username}
       ></input>
